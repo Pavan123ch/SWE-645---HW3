@@ -1,0 +1,30 @@
+name: Build and Push Images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+    - name: Build Backend Image
+      run: |
+        docker build -t surya100599/backend-app:latest ./backend
+        docker push surya100599/backend-app:latest
+
+    - name: Build Frontend Image
+      run: |
+        docker build -t surya100599/frontend-app:latest ./frontend
+        docker push surya100599/frontend-app:latest
