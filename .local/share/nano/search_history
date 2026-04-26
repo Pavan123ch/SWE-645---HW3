@@ -1,0 +1,9 @@
+h3
+3
+all survey
+<h3>All Surveys</h3>{surveys.map(...)}
+surveys.map
+<button            className="btn btn-secondary mt-3"            onClick={() => setPage("home")}          >            Back          </button>        </div>      )}    </div>  );}export default App<button            className="btn btn-secondary mt-3"            onClick={() => setPage("home")}          >            Back          </button>        </div>      )}    </div>  );}export default App;
+
+
+
