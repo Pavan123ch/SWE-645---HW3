@@ -28,14 +28,3 @@ jobs:
       run: |
         docker build -t surya100599/frontend-app:latest ./frontend
         docker push surya100599/frontend-app:latest
-
-    # 🚀 CD STEP (proper way)
-    - name: Setup Kubeconfig
-      run: |
-        mkdir -p $HOME/.kube
-        echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
-
-    - name: Deploy to Kubernetes
-      run: |
-        kubectl set image deployment/frontend frontend=surya100599/frontend-app:latest
-        kubectl set image deployment/backend backend=surya100599/backend-app:latest
